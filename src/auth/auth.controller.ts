@@ -8,21 +8,21 @@ export class AuthController {
   constructor(private authService: AuthService) {}
   @Post('/local/signup')
   singupLocal(@Body() dto: AuthDto): Promise<Tokens> {
-    this.authService.signupLocal(dto)
+    return this.authService.signupLocal(dto)
   }
   
   @Post('/local/signin')
-  singinLocal() {
-    this.authService.signinLocal()
+  singinLocal(@Body() dto: AuthDto): Promise<Tokens> {
+    return this.authService.signinLocal(dto)
   }
   
   @Post('/logout')
   logout() {
-    this.authService.logout()
+    return this.authService.logout()
   }
   
   @Post('/refresh')
   refreshTokens() {
-    this.authService.refreshToken()
+    return this.authService.refreshToken()
   }
 }
